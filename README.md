@@ -1,0 +1,1 @@
+snips-app-collection

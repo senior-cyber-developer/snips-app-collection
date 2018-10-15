@@ -33,15 +33,37 @@ snipsClient.on('message', function (topic, messageBuffer) {
   const intent = intents[topic];
 
   if (intent) {
+    console.log(`handling intent "${intent.name}"...`);
     // send HTTP post request to configured url
     request.post({
       url: intent.url,
       method: 'POST',
       json: message,
     }, (error, response, body) => {
+      console.log(`error: ${error}`);
+      console.log('------------------------------------------');
+      console.log(`response: ${response}`);
+      console.log('------------------------------------------');
+      console.log(`body: ${body}`);
+
+      let responseText = '';
+      //const appResult = JSON.parse(body);
+
       if (error) {
         console.log(error.message);
+
+        responseText = `Error. ${error.message}`; 
+      } else {
+        responseText = body.responseText; 
       }
+      
+      console.log(`response text from app: "${responseText}"`)
+
+      snipsClient.publish('hermes/tts/say', JSON.stringify({
+        text: responseText,
+        siteId: message.siteId,
+        sessionId: message.sessionId,
+      }));
     });
   }
 });

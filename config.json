@@ -6,7 +6,7 @@
       "intents": [
         {
           "name": "kuper-adrian:showWeather",
-          "url": "http://localhost:9001/"
+          "url": "http://localhost:9002/"
         }
       ]
     }

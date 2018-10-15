@@ -6,8 +6,13 @@ $(function () {
     $('#listen-indicator').html('listening...')
   });
 
-  socket.on('show-builds', () => {
+  socket.on('show-weather', (args) => {
     $('#listen-indicator').html('');
-    $('#intent-result').html('here are the latest jenkins builds!');
+
+    const appResult = JSON.parse(args);
+    console.log(args);
+    const weatherResultString = `Weather in ${appResult.name}: ${appResult.weather[0].description} at ${appResult.main.temp - 273.15}°C.`
+    $('#intent-result').html(weatherResultString);
+
   });
 });

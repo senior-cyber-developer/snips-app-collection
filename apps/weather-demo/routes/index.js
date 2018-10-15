@@ -19,7 +19,14 @@ router.route('/')
       let responseText = '';
       const apiResult = JSON.parse(body);
 
-      // ... make response for assistant from result...
+      // send api result to dashboard...
+      request({
+        url: `http://localhost:3000/apps/weather`,
+        method: 'POST',
+        json: apiResult,
+      });
+
+      // ... and make response for assistant from result...
       if (error) {
         console.log(error.message);
         responseText = `Error. ${error.message}`;
@@ -27,7 +34,7 @@ router.route('/')
         responseText = `The weather is ${apiResult.weather[0].main} in ${config.city}. It is ${apiResult.main.temp - 273.15} degrees celsius.`
       }
 
-      // ... and send it back
+      // ... and send it to assistant
       res.json({ responseText });
     })
   });

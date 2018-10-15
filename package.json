@@ -1,0 +1,24 @@
+{
+  "name": "snips-app-collection",
+  "version": "1.0.0",
+  "description": "Collection of different snips apps",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "mqtt": "2.18.8",
+    "request": "2.88.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senior-cyber-developer/snips-app-collection.git"
+  },
+  "author": "senior-cyber-devs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/senior-cyber-developer/snips-app-collection/issues"
+  },
+  "homepage": "https://github.com/senior-cyber-developer/snips-app-collection#readme"
+}

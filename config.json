@@ -1,0 +1,14 @@
+{
+  "snipsHostAdress": "192.168.188.36",
+  "apps": [
+    {
+      "name": "weather",
+      "intents": [
+        {
+          "name": "kuper-adrian:showWeather",
+          "url": "http://localhost:9001/"
+        }
+      ]
+    }
+  ]
+}

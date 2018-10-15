@@ -2,6 +2,10 @@
 
 Snips app that uses [OpenWeatherMap](https://openweathermap.org/) to fetch the current weather.
 
+## Link In App Store
+
+TODO
+
 ## Intents
 
 * `kuper-adrian:showWeather`

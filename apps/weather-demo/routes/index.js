@@ -24,7 +24,7 @@ router.route('/')
         console.log(error.message);
         responseText = `Error. ${error.message}`;
       } else {
-        responseText = `The weather is ${apiResult.weather[0].main}. It is ${apiResult.main.temp - 273.15} degrees celsius.`
+        responseText = `The weather is ${apiResult.weather[0].main} in ${config.city}. It is ${apiResult.main.temp - 273.15} degrees celsius.`
       }
 
       // ... and send it back

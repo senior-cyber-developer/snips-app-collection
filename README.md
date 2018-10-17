@@ -16,34 +16,40 @@ To archieve this, the repo is devided into three main parts:
 
 For everything to work, one has to start the intent-listener and the dashboard web app. For each supported app deployed to the assistant the corresponding intent action service inside `apps` has to be started as well.
 
-The following graphic shows 
-
+The following graphic shows how the compontents interact with each other:
 ```
 +-----------------------+
 |                       |
 | Snips Voice Assistant |
 |                       |
 | +------------------+  |                                 +-------------------------+
-| |                  |  |       showWeather               |                         |
+| |                  |  |       showWeather-intent        |                         |
 | | weather-demo-app +----------------------------------->+ Intent Listener Service |
 | |                  |  |                                 |                         |
 | +------------------+  <---------------------------------+-+-+---------------------+
 |                       |      assistant voice text         | ^
 +---+------------+------+                                   | |
     ^            |                                          | |
-    |            |                              showWeather | | assistant voice text
+    |            |                       showWeather-intent | | assistant voice text
     | voice      | answer                                   | |
     |            |                                          | |
     |            v                                          v |
-  +-+------------+--+                                  +----+-+----------------------+                          +-----------+
-  |                 |                                  |                             |    more weather info     |           |
-  |    User         |                                  | weather-demo action service +------------------------->+ Dashboard |
-  |                 |                                  |                             |                          |           |
-  +-----------------+                                  +-----------------------------+                          +-----------+
-
+  +-+------------+--+                                  +----+-+----------------------+
+  |                 |                                  |                             |
+  |    User         |                                  | weather-demo action service |
+  |                 |                                  |                             |
+  +-----------------+                                  +-------+---------------------+
+                                                               |
+                                                               |
+                                                               | more weather info
+                                                               |
+                                                               |
+                                                         +-----v-----+
+                                                         |           |
+                                                         | Dashboard |
+                                                         |           |
+                                                         +-----------+
 ```
-
-
 
 ## Links
 

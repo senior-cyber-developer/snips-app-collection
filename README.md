@@ -79,8 +79,29 @@ The intent listener service needs intents he can listen to. These will be provid
 
 1. Go to https://console.snips.ai/login and login with your credentials.
 2. Go to the "My Apps" tab and click "Create a New App"
-3. In the new dialog, select a picture, language, name and description for your app and click "Create".
-4. TODO
+3. In the new dialog, select a picture, language, name (e.g. `Weather-Demo`) and description for your app and click "Create".
+4. Now we will create out intent. Click "Create New Intent" and enter a name (e.g. `showWeather`) and an description. Then click "Create".
+5. Next we will need to create a so-called _Slot_. Slots are entities or key phrases that have to be extracted from your voice command. Click "+ Add Slot", enter a fitting name (e.g. `weather`) and choose a type. If none of the existing types fit your slot, you can create a new, custom slot type by clicking "New Slot Type".
+6. Once your slot is created it's time to add training examples for your intent. Click on "Type your training example..." and type an example sentence which might be used by you to trigger your voice assistant (e.g. `Show me the weather please`). Make sure to mark the slots in your sentences by highlighting them and selecting the fitting slot in the popup. Also: The more training sentences, the better.
+7. After feeding enough training examples, feel free to test the detection of your voice command by clicking on the microphone at to top right corner.
+8. Save your intent by clicking the "Save" button on the bottom right.
+
+If you need more help on creating your own intents, please refer to the official [docs](https://snips.gitbook.io/documentation/console/set-intents#create-your-intents-slots). If your have an Raspberry Pi running Snips feel free to add your new app to your assistant.
+
+### Adding An Intent Action Service
+
+Now it's time to program the action, which will take please when the intent of your app triggers.
+
+1. In the snips-app-collection project create a new folder inside `apps/` and name it after your app (e.g. `weather-demo/`).
+2. TODO
+
+### Talking To The Dashboard
+
+TODO
+
+### Wiring Everything Up
+
+TODO
 
 ## Hacktoberfest 2018 Roadmap For Participants
 
@@ -90,9 +111,9 @@ TODO
 
 __New Apps:__
 
-* Jenkins CI ("Show me the latest build results")
-* Timer ("Set a timer for 10 minutes")
-* Jokes ("Tell me a joke")
+* Jenkins CI ("Show me the latest build results.")
+* Timer ("Set a timer for 10 minutes.")
+* Jokes ("Tell me a joke.")
 * Time ("What time is it?", "What time is it in New York?")
 * Math/Currency ("How much is 5$ in Yen?", "What is 1337 + 42?")
 * ...
@@ -100,12 +121,12 @@ __New Apps:__
 __Improve An Existing App:__
 
 * Add new intents
-* Improve the infos on the dashboard
+* Improve the infos provided on the dashboard
 * ...
 
 __Other:__
 
-* Improve this README (with e.g. new ideas :wink:)
+* Improve this README (e.g. with new hacktoberfeset ideas :wink:)
 * Improve any of the main compontents (intent listener service or the dashboard)
 * ...
 

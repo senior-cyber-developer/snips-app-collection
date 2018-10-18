@@ -2,6 +2,15 @@
   "snipsHostAdress": "192.168.188.36",
   "apps": [
     {
+      "name": "ask-time",
+      "intents": [
+        {
+          "name": "Slyn:ask-time",
+          "url": "http://localhost:9001/"
+        }
+      ]
+    },
+    {
       "name": "weather",
       "intents": [
         {

@@ -5,7 +5,6 @@ echo "Start Snips App Collection"
 echo "Checking requirements..."
 NODEJS_PKG="nodejs"
 
-#if [ $CHECK_PKG -eq 0 ]; then
 if dpkg --get-selections | grep -q "^$NODEJS_PKG[[:space:]]*install$" >/dev/null; then
 	echo "Proceed"
 

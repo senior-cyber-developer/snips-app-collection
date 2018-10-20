@@ -21,7 +21,10 @@ router.route('/')
     } else {
       responseText = `Good Afternoon, it is ${answerHours} o'clock and  ${answerMinutes} Minutes. Have a nice evening`;
     }
-
+    request({
+      url: `http://localhost:3000/apps/answer`,
+      method: 'POST',
+    });
     // send it to assistant
     res.json({ responseText });
   });

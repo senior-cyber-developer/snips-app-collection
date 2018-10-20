@@ -93,11 +93,93 @@ If you need more help on creating your own intents, please refer to the official
 Now it's time to program the action, which will take please when the intent of your app triggers.
 
 1. In the snips-app-collection project create a new folder inside `apps/` and name it after your app (e.g. `weather-demo/`).
-2. TODO
+2. In the newly created folder we will now have to create our small program that executes the action which should be triggered by the intent of our Snips app. This can be done with any programming language. The only thing necessary for your program is to be able to receive and send http request. Using Node.js, Javascript and the [Express](https://expressjs.com/) and [Request](https://github.com/request/request) frameworks your intent action service could be made in basicly two files (you can see the whole working weather-demo inside `./apps/weather-demo/`):
+
+`./apps/weather-demo/index.js`:
+```javascript
+const express = require('express');
+const bodyParser = require('body-parser');
+const indexRouter = require('./routes/index');
+
+const api = express();
+const PORT = 9002;
+
+api.use(bodyParser.json());
+api.use(indexRouter); // index router listens on http://localhost:9002/
+
+// send 404 for all other requests
+api.get('*', (req, res) => {
+  res.status(404).send('not found');
+});
+
+// start listening
+api.listen(PORT, () => {
+  console.log(`running on port ${PORT}`);
+});
+```
+`./apps/weather-demo/routes/index.js`:
+```javascript
+const express = require('express');
+const request = require('request');
+
+const router = express.Router();
+
+// http://localhost:9002/
+router.route('/').post((req, res) => {
+  const snipsMessage = req.body;
+  const weatherInfo = { temp: 12, main: "Cloudy" };
+  
+  // send http post request to dashboard web app with
+  // weather data so it can be displayed
+  request({
+    url: `http://localhost:3000/apps/weather`,
+    method: 'POST',
+    json: weatherInfo,
+  });
+
+  responseText = `The weather is ${weatherInfo.main}. It is ${weatherInfo.temp} degrees celsius.`
+  
+  // send response text back to assistant
+  res.json({ responseText });
+});
+
+module.exports = router;
+```
+
+That's basicly it. At this point (if you have a Raspberry Pi with a Snips assistant running) you should be able to start the intent listener and your intent action service, make your voice command and hear your lovely assistant responding to your request.
+
+__Remember:__ Feel free to use any language and framework you like for this. The only thing important is, that you can listen for http request, which will be send by the intent listener service to an configureable url, and that you can emit http requests yourself in order to update the dashboard.
 
 ### Talking To The Dashboard
 
-TODO
+As you may have noticed, we sent a http request to the dashboard in out intent action service earlier. In order for the dashboard to update itself we have to modify though.
+
+1. Navigate to `snips-dashboard/` and create a new `.js` file inside `routes/apps/` which has the name of your app.  This file will be the http request handler at `http://localhost:3000/apps/[your-app-name]`.
+2. Add the following template code (remember to replace placeholder by their respective values for your app):
+
+```javascript
+const express = require('express');
+const router = express.Router();
+
+let io;
+
+router.post('/[your-intent-name]', function(request, response){
+  if (!io) {
+    io = require('../../socket-helper').io;
+  }
+
+  const actionServiceMessage = req.body;
+
+  io.sockets.emit('[your-intent-name]', JSON.stringify({ some: 'message for the dashboard' }));
+  
+  res.status(200).send();
+});
+
+module.exports = router;
+```
+
+3. Inside the above code example we handle the post request emitted by our intent action service and use `io.sockt.emit()` to send a message to the dashboard in real-time.
+4. TODO
 
 ### Wiring Everything Up
 
@@ -105,7 +187,15 @@ TODO
 
 ## Hacktoberfest 2018 Roadmap For Participants
 
-TODO
+First make sure to read this README and the docs about Snips to make yourself acquainted with the project. Then you could do the following to gain some pull request for Hacktoberfest:
+
+* In order to learn how to do a pull request: fork this repository and create a folder inside `apps/` named after an app you would like to add. Inside your newly created folder add a `README.md` that contains some basic info about the app you would like to create. Then you could open your first pull request to show everyone what you will be working on.
+* Next, go to [console.snips.ai](http://console.snips.ai) and create an app with all the intents you will need. Then implement the intent action service inside `apps/[your-app-name]/`. Your app does not have to be perfect at this point, but should at least provide a reasonable answer thorugh the voice assistant. You should publish your snips app to the snips store and link it inside the README of your app. Otherwise other people won't be able to try your app. Also: Dont' forget to add your intents to the `config.json` of the intent listener service. At this point you could open another pull request for everyone to try your app for the first time. 
+* Make your app works with the dashboard. Add a http request to your intent action service to the dashboard that sends some info you want to display on the web page. Then go to the `snips-dashboard/` project, add a route inside `routes/apps/[your-app-name]/` and emit a socket.io event to the dashboard web page. Lastly add an socket.io event listener to `public/javascripts/index.js` and change to dashboard with the data of your app. If the dashboard updates and displays some info in addition to your voice assistant speaking, open another pull request in order to share.
+* Improve or add to an existing app and open a pull request.
+* Anything you like or you think is missing.
+
+Most inportantly: Have fun, happy coding and happy Hacktoberfest :beers:
 
 ### Idea Collection For Hacktoberfest
 

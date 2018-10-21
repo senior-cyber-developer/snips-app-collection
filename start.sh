@@ -22,7 +22,17 @@ if dpkg --get-selections | grep -q "^$NODEJS_PKG[[:space:]]*install$" >/dev/null
 
 	echo "Start intent-listener..."
 	npm start --prefix ./intent-listener/ &
-	echo "Running"
+	printf "Running\n"
+
+	echo "Install and start apps..."
+	for d in apps/*/ ; do
+		printf "Install app dependencies...\n"
+		npm install --prefix $d
+		printf "Start app\n"
+		npm start --prefix $d &
+		printf "done\n\n"
+	done
+	printf "All apps running\n\n"
 
 	wait
 else

@@ -4,7 +4,7 @@ var router = express.Router();
 let io;
 
 /* GET home page. */
-router.post('/answer', function(req, res, next) {
+router.post('/askTime', function(req, res, next) {
   if (!io) {
     io = require('../../socket-helper').io;
   }

@@ -22,7 +22,7 @@ router.route('/')
       responseText = `Good Afternoon, it is ${answerHours} o'clock and  ${answerMinutes} Minutes. Have a nice evening`;
     }
     request({
-      url: `http://localhost:3000/apps/answer`,
+      url: `http://localhost:3000/apps/askTime`,
       method: 'POST',
     });
     // send it to assistant

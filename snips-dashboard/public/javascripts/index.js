@@ -10,10 +10,27 @@ $(function () {
     $('#listen-indicator').html('');
 
     const appResult = JSON.parse(args);
-    console.log(args);
-    const weatherResultString = `Weather in ${appResult.name}: ${appResult.weather[0].description} at ${appResult.main.temp - 273.15}°C.`
-    $('#intent-result').html(weatherResultString);
 
+    // make post requet to /apps/weather/render
+    // to get the html needed to have some nice 
+    // looking weather info
+    $.ajax({
+      url: '/apps/weather/render',
+      method: 'POST',
+      data: JSON.stringify(appResult),
+      contentType: 'application/json',
+      success: (data, textStatus, jqXHR) => {
+        console.log('success');
+        $('#intent-result').html(data);
+      },
+      error: (jqXHR, textStatus, errorThrown) => {
+        console.log('error');
+        console.log(errorThrown);
+      },
+      complete: (jqXHR, textStatus) => {
+        console.log('completed');
+      },
+    })
   });
 
   socket.on('ask-time', (args) => {

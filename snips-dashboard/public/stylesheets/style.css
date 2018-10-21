@@ -1,4 +1,25 @@
-
 a {
   color: #00B7FF;
+}
+
+.weather {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.weather .columns {
+  border: solid;
+  border-width: 1px;
+  border-color: gray;
+  border-radius: 10px;
+}
+
+.weather .weather-icon-container {
+  font-size: 80px;
+  text-align: center;
+}
+
+.weather .temp-container {
+  font-size: 80px;
+  text-align: center;
 }

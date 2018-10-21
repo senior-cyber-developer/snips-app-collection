@@ -1,0 +1,10 @@
+div(class="weather")
+  section(class="hero")
+    div(class="hero-body")
+      div(class="container")
+        h1(class="title") Current Weather
+        h2(class="subtitle") in #{name}, #{sys.country}
+  div(class="columns")
+    div(class="weather-icon-container column is-one-third")
+      i(class= iconClass)
+    div(class="temp-container column") #{main.temp} °C

@@ -195,7 +195,7 @@ First make sure to read this README and the docs about Snips to make yourself ac
 * Improve or add to an existing app and open a pull request.
 * Anything you like or you think is missing.
 
-Most inportantly: Have fun, happy coding and happy Hacktoberfest :beers:
+Most importantly: Have fun, happy coding and happy Hacktoberfest :beers:
 
 ### Idea Collection For Hacktoberfest
 

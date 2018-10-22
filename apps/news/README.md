@@ -1,6 +1,6 @@
 # News
 
-Gets a top headline of the configured country
+Gets a top headline (powered by [NewsAPI.org](https://newsapi.org/)) of the configured country
 
 ## Link To App Store
 

@@ -18,6 +18,15 @@
           "url": "http://localhost:9002/"
         }
       ]
+    },
+    {
+      "name": "news",
+      "intents": [
+        {
+          "name": "gfxer:Headline",
+          "url": "http://localhost:9003/"
+        }
+      ]
     }
   ]
 }

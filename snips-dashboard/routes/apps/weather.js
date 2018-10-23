@@ -24,11 +24,8 @@ router.post('/weather', function(req, res, next) {
 router.post('/weather/render', (req, res) => {
   const weatherData = req.body;
 
-  // change temperature to °C
-  weatherData.main.temp = Math.round(weatherData.main.temp - 273.15);
-
   const prefix = 'wi wi-';
-  const code = weatherData.weather[0].id;
+  const code = weatherData.currentWeather.id;
   let icon = weatherIcons[code].icon;
 
   // If we are not in the ranges mentioned above, add a day/night prefix.

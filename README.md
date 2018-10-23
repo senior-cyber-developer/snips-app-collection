@@ -54,6 +54,8 @@ The following graphic shows how the compontents interact with each other:
 ## Currently Supported Snips-Apps
 
 * [__Weather-Demo__](https://console.snips.ai/store/en/bundle_mp7rG4po7mE): Ask your lovely voice assistant about the weather and see all the details on the dashboard.
+* [__Ask-Time__](https://console.snips.ai/app-editor/bundle_zqA7PwkWONrx) To lazy to pull out your phone to check the time? Just ask your well-mannered voice assistant without moving a finger!
+* [__News__](https://console.snips.ai/app-editor/bundle_GqzwBxGN1al) Want to know about the latest news and headlines? Your voice assistant is always informed on any topic.
 
 ## How To Contribute An App
 

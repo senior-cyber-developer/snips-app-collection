@@ -59,4 +59,15 @@ if(![System.IO.File]::Exists('.\node_modules' )){
 }
 cd ..
 
+cd .\apps\news
+if(![System.IO.File]::Exists('.\node_modules' )){
+    WRITE-HOST "[Log] node_modules exists!"
+    WRITE-HOST "[Log] starting news app."
+    start-process powershell -ArgumentList '-noexit -command npm start'
+}else{
+    WRITE-HOST "[Log] node_modules do not exist!"
+    WRITE-HOST "[Log] stop starting news app."
+}
+cd ..
+
 

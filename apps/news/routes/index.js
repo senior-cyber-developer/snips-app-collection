@@ -10,12 +10,21 @@ const router = express.Router();
 router.route('/')
   .post((req, res) => {
     const snipsMessage = req.body;
-	const requestedCategory = snipsMessage.slots[0].value.value;
-    console.log(JSON.stringify(snipsMessage));
-
+	console.log(JSON.stringify(snipsMessage));
+	
+	const requestedCategory = snipsMessage.slots[0].rawValue;
+	let requestUrl = '';
+	if(requestedCategory == 'headline') {
+		requestUrl = `https://newsapi.org/v2/top-headlines?country=${config.country}&apiKey=${secrets.apiKey}`;
+	}
+	else {
+		requestUrl = `https://newsapi.org/v2/top-headlines?country=${config.country}&category=${requestedCategory}&apiKey=${secrets.apiKey}`;
+	}
+	
     // poll News API for headlines
     request({
-	  url: `https://newsapi.org/v2/top-headlines?country=${config.country}&category=${requestedCategory}&apiKey=${secrets.apiKey}`,
+	  url: requestUrl,
+	  // url: `https://newsapi.org/v2/top-headlines?country=${config.country}&category=${requestedCategory}&apiKey=${secrets.apiKey}`,
       method: 'GET'
     }, (error, response, body) => {
       let responseText = '';

@@ -10,10 +10,12 @@ router.route('/')
 
     let responseText = 'The result is ';
     
+    //Get values from the defined slots in the Intent
     var number1 = snipsMessage['slots'][0]['value']['value'];
     var operation = snipsMessage['slots'][1]['value']['value'];
     var number2 = snipsMessage['slots'][2]['value']['value'];
 
+    //choose the correct mathematical operation
     if (operation == '+'){
         responseText += (number1+number2).toString();
     }

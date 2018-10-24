@@ -28,5 +28,14 @@
         }
       ]
     }
+    {
+      "name": "calculator",
+      "intents": [
+        {
+          "name": "Ionidas:equation",
+          "url": "http://localhost:9004/"
+        }
+      ]
+    }
   ]
 }

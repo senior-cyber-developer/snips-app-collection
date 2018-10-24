@@ -1,0 +1,48 @@
+{
+  "input": "compute one hundred two plus two hundred",
+  "intent": {
+    "intentName": "Ionidas:equation",
+    "probability": 1
+  },
+  "slots": [
+    {
+      "rawValue": "one hundred two",
+      "value": {
+        "kind": "Number",
+        "value": 102
+      },
+      "range": {
+        "start": 8,
+        "end": 23
+      },
+      "entity": "snips/number",
+      "slotName": "number1"
+    },
+    {
+      "rawValue": "plus",
+      "value": {
+        "kind": "Custom",
+        "value": "+"
+      },
+      "range": {
+        "start": 24,
+        "end": 28
+      },
+      "entity": "mathematik Operatoren",
+      "slotName": "op"
+    },
+    {
+      "rawValue": "two hundred",
+      "value": {
+        "kind": "Number",
+        "value": 200
+      },
+      "range": {
+        "start": 29,
+        "end": 40
+      },
+      "entity": "snips/number",
+      "slotName": "number2"
+    }
+  ]
+}

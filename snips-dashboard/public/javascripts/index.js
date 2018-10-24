@@ -19,9 +19,53 @@ $(function () {
       method: 'POST',
       data: JSON.stringify(appResult),
       contentType: 'application/json',
-      success: (data, textStatus, jqXHR) => {
+      success: (htmlResult, textStatus, jqXHR) => {
         console.log('success');
-        $('#intent-result').html(data);
+        $('#intent-result').html(htmlResult);
+
+        var labels = [];
+        var data = [];
+
+        var maxTemp = -100;
+        var minTemp = 100;
+
+        appResult.forecast.forEach((item) => {
+          labels.push(moment(item.time).format('HH:mm:ss'));
+          data.push(item.temp);
+
+          if (minTemp > item.temp) {
+            minTemp = item.temp;
+          }
+
+          if (maxTemp < item.temp) {
+            maxTemp = item.temp;
+          }
+        });
+
+        var ctx = document.getElementById("temp-chart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '°C',
+                    data: data,
+                    fill: false,
+                    borderColor: 'rgba(66, 134, 244, 222)'
+                }],
+            },
+            options: {
+              scales: {
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        suggestedMin: minTemp - 3,    // minimum will be 0, unless there is a lower value.
+                        suggestedMax: maxTemp + 3
+                    }
+                }]
+            }
+            }
+        });
       },
       error: (jqXHR, textStatus, errorThrown) => {
         console.log('error');

@@ -23,3 +23,7 @@ a {
   font-size: 80px;
   text-align: center;
 }
+
+#temp-chart {
+  height: 350px !important;
+}

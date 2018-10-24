@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "express": "4.16.4",
-    "request": "2.88.0"
+    "request": "2.88.0",
+    "moment": "2.22.2"
   },
   "author": "Adrian Kuper",
   "license": "MIT"

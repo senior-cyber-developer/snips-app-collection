@@ -28,6 +28,9 @@ router.route('/')
     else if (operation == '/'){
         responseText += (number1/number2).toString();
     }
+    else if (operation == '^'){
+        responseText += (Math.pow(number1,number2)).toString();
+    }
     // ... generate and send responsetext to assistant.
 
     request({

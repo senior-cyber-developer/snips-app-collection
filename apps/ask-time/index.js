@@ -17,5 +17,8 @@ api.get('*', (req, res) => {
 
 // start listening
 api.listen(PORT, () => {
-  console.log(`running on port ${PORT}`);
+  console.log(`#----------------------------------------------------------------#`);
+  console.log(`| Ask-Time started successfull. Running on port ${PORT}.            |`);
+  console.log(`| Thank you for utilize senior-cyber-developers Ask-Time Service |`);
+  console.log(`#----------------------------------------------------------------#`)
 });

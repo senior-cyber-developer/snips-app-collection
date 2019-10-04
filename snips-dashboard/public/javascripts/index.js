@@ -77,7 +77,7 @@ $(function () {
     })
   });
 
-  socket.on('ask-time', (args) => {
+  socket.on('ask-time', (args) =>{
     $('#answer-listen-indicator').html('');
     let responseText = ''; 
     console.log(args);

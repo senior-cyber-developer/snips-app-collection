@@ -1,3 +1,9 @@
 node_modules/
 *.log
 secrets.json
+apps/news/package-lock.json
+apps/weather-demo/package-lock.json
+intent-listener/package-lock.json
+package.json
+intent-listener/config.json
+snips-dashboard/package-lock.json

@@ -1,8 +1,9 @@
 const request = require('request');
 const mqtt = require('mqtt');
 const config = require('./config.json');
+const PORT = 1883;
 
-const snipsClient  = mqtt.connect('mqtt://' + config.snipsHostAdress, { port: 1883 });
+const snipsClient  = mqtt.connect('mqtt://' + config.snipsHostAdress, { port: `${PORT}` });
 
 // lookup dictionary for all intents
 const intents = {};
@@ -23,7 +24,11 @@ snipsClient.on('connect', function () {
     })
   });
 
-  console.log('READY!');
+  // console.log('READY!');
+  console.log(`#----------------------------------------------------------------#`);
+  console.log(`| Intent-Listener started successfull. Listen on port ${PORT}.      |`);
+  console.log(`| Thank you for utilize senior-cyber-developers Intent-Listener  |`);
+  console.log(`#----------------------------------------------------------------#`);
 });
 
 snipsClient.on('message', function (topic, messageBuffer) {
@@ -40,11 +45,11 @@ snipsClient.on('message', function (topic, messageBuffer) {
       method: 'POST',
       json: message,
     }, (error, response, body) => {
-      console.log(`error: ${error}`);
+      console.log(`URL: ${intent.url}`);
       console.log('------------------------------------------');
       console.log(`response: ${response}`);
       console.log('------------------------------------------');
-      console.log(`body: ${body}`);
+      console.log(`body: ${body.responseText}`);
 
       let responseText = '';
       //const appResult = JSON.parse(body);

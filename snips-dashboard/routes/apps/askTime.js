@@ -12,7 +12,10 @@ router.post('/askTime', function(req, res, next) {
   const weatherAppMessage = req.body;
 
   try {
-    io.sockets.emit('ask-time', JSON.stringify(weatherAppMessage));
+    console.log('aks-time');
+    console.log(weatherAppMessage);
+    console.log(req);
+    io.sockets.emit('ask-time',{ message: req.body } );
   } catch (error) {
     console.log(error.message);
     res.status(500).send(error.message);

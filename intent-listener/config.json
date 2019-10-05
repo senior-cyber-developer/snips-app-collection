@@ -27,6 +27,24 @@
           "url": "http://localhost:9003/"
         }
       ]
+    },
+    {
+      "name": "joke",
+      "intents": [
+        {
+          "name": "kuper-adrian:tellJoke",
+          "url": "http://localhost:9004/api/joke"
+        }
+      ]
+    }
+    {
+      "name": "calculator",
+      "intents": [
+        {
+          "name": "Ionidas:equation",
+          "url": "http://localhost:9004/"
+        }
+      ]
     }
   ]
 }

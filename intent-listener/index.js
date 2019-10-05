@@ -3,7 +3,11 @@ const mqtt = require('mqtt');
 const config = require('./config.json');
 const PORT = 1883;
 
+<<<<<<< HEAD
+const snipsClient  = mqtt.connect('mqtt://' + config.snipsHostAdress, { port: `${PORT}` });
+=======
 const snipsClient  = mqtt.connect('mqtt://' + config.snipsHostAdress, { port: `${PORT}`  });
+>>>>>>> master
 
 // lookup dictionary for all intents
 const intents = {};
@@ -24,9 +28,13 @@ snipsClient.on('connect', function () {
     })
   });
 
+<<<<<<< HEAD
+  // console.log('READY!');
+=======
+>>>>>>> master
   console.log(`#----------------------------------------------------------------#`);
   console.log(`| Intent-Listener started successfull. Listen on port ${PORT}.      |`);
-  console.log(`| Thank you for utilize senior-cyber-developers Intent-Listener  |`);
+  console.log(`| Thank you for using senior-cyber-developers Intent-Listener  |`);
   console.log(`#----------------------------------------------------------------#`);
 });
 
@@ -44,11 +52,11 @@ snipsClient.on('message', function (topic, messageBuffer) {
       method: 'POST',
       json: message,
     }, (error, response, body) => {
-      console.log(`error: ${error}`);
+      console.log(`URL: ${intent.url}`);
       console.log('------------------------------------------');
       console.log(`response: ${response}`);
       console.log('------------------------------------------');
-      console.log(`body: ${body}`);
+      console.log(`body: ${body.responseText}`);
 
       let responseText = '';
       //const appResult = JSON.parse(body);

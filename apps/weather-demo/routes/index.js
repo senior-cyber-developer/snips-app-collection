@@ -60,6 +60,7 @@ function craftResult(currentWeather, forecast) {
 router.route('/')
   .post((req, res) => {
     const snipsMessage = req.body;
+    const name = 'Senior Cyber Developer';
     console.log(JSON.stringify(snipsMessage));
 
     // poll OpenWeatherMap api for current weather ...
@@ -110,6 +111,40 @@ router.route('/')
         return date.toLocaleTimeString();
       }
 
+<<<<<<< HEAD
+      // function with some experimental sentence 
+      function GenerateVoiceFeedback()
+      {
+        var sentencOptions =
+        [
+          // Can Snips tell some really bad jokes? Let's try it!
+          ` What's  the  difference  between  a  chick  pea  and  a  potato?? Mr. ${name}? ... The Answer is: In little nazis. Now to the Weather: `,
+          ` How  did  Hitler  tie  his  shoes? Mr. ${name}? ... The Answer is: You wouldn't pay to have a potato on you!. Now to the Weather: `,
+          ` What  do  you  call  a  lesbian  dinosaur? Mr. ${name}? ... The Answer is: Lickalotapus. Now to the Weather: `,
+          ` What  do  you  call  a  belt  made  out  of  watches?? Mr. ${name}? ... The Answer is: A waist of time!. Now to the Weather: `,
+          ` What  do  you  do  when  your  shoes  get  holes  in  them? Mr. ${name}? ... The Answer is: Reboot!. Now to the Weather: `,
+          ` What  do  you  call  a  blind  dinosaur? Mr. ${name}? ... The Answer is: Doyouthinkhesaurus. Now to the Weather: `,
+          ` What  kind  of  shoes  does  a  pedophile  wear? Mr. ${name}? ... The Answer is: White vans. Now to the Weather: `,
+          ` Did  you  hear  about  the  guy  who  invented  the  knock  knock  joke? Mr. ${name}? ... The Answer is: He won the "no-bell" prize!. Now to the Weather: `      
+        ]
+  
+        var min = 1;
+        var max = sentencOptions.length;
+        var x = Math.round(Math.random() * (max - min)) + min;
+  
+        return sentencOptions[x].toString();
+      }
+
+      // local function to calculate the time of sunrise
+      function GetSunrise()
+      {
+        var sec = currentWeather.sys.sunrise;
+        var date = new Date(sec * 1000);
+        return date.toLocaleTimeString();
+      }
+
+=======
+>>>>>>> master
       // local function to calculate the time of sunset
       function GetSunset()
       {
@@ -117,6 +152,15 @@ router.route('/')
         var date = new Date(sec * 1000);
         return date.toLocaleTimeString();
       }
+<<<<<<< HEAD
+
+      // generate response text
+      responseText = GenerateVoiceFeedback() + `  There  are  ${currentWeather.weather[0].description}  at ${kelvinToCelsius(currentWeather.main.temp)}  degrees  celsius  currently  in ${config.city}.`
+      responseText = responseText + ` The  Speed  of  Wind  is  ${currentWeather.wind.speed} ` ;
+      responseText = responseText + ` Today  the  Sun  will  rise  at ${GetSunrise()}`;
+      responseText = responseText + ` Today  the  Sun  will  set  at ${GetSunset()}`;
+=======
+>>>>>>> master
 
       // generate response text
       responseText = GenerateVoiceFeedback() + `  There  are  ${currentWeather.weather[0].description}  at ${kelvinToCelsius(currentWeather.main.temp)}  degrees  celsius  currently  in ${config.city}.`

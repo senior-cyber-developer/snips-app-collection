@@ -72,7 +72,7 @@ router.route('/')
       url: `http://localhost:3000/apps/askTime`,
       method: 'POST',
     });
-    // send it to assistant
+    // send it to Website
     res.json({ responseText });
   });
 

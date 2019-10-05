@@ -60,7 +60,7 @@ function craftResult(currentWeather, forecast) {
 router.route('/')
   .post((req, res) => {
     const snipsMessage = req.body;
-    const name = 'Senoir Cyber Developer';
+    const name = 'Senior Cyber Developer';
     console.log(JSON.stringify(snipsMessage));
 
     // poll OpenWeatherMap api for current weather ...

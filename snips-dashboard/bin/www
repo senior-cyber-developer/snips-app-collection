@@ -34,17 +34,10 @@ server.on('listening', onListening);
 
 
 socketHelper.io.on('connection', (s) => {
-<<<<<<< HEAD
-  console.log(`#-----------------------------------------------------------------------#`);
-  console.log(`| Snips-Dashboard started successfull. Socket.io connected on port ${port}.|`);
-  console.log(`| Thank you for using senior-cyber-developers Snips-Dashboard         |`);
-  console.log(`#-----------------------------------------------------------------------#`);
-=======
   console.log(`#----------------------------------------------------------------#`);
   console.log(`| Snips-Dashboard started successfull. Socket.io connected on port ${port}.   |`);
   console.log(`| Thank you for utilize senior-cyber-developers Snips-Dashboard  |`);
   console.log(`#----------------------------------------------------------------#`);
->>>>>>> master
 });
 
 

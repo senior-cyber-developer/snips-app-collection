@@ -34,7 +34,7 @@ snipsClient.on('connect', function () {
 >>>>>>> master
   console.log(`#----------------------------------------------------------------#`);
   console.log(`| Intent-Listener started successfull. Listen on port ${PORT}.      |`);
-  console.log(`| Thank you for utilize senior-cyber-developers Intent-Listener  |`);
+  console.log(`| Thank you for using senior-cyber-developers Intent-Listener  |`);
   console.log(`#----------------------------------------------------------------#`);
 });
 
